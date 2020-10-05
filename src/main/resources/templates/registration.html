@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Sing-in</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>
+        <link rel="stylesheet" type="text/css" href="css/elemens/button.css"/>
+        <link rel="stylesheet" type="text/css" href="css/elemens/field.css"/>
+    </head>
+
+    <body>
+
+        <div class="container_all_registration">
+
+            <div class="container_error_box">
+                  <div th:if="${param.error}">
+                     Invalid username and password.
+                  </div>
+                  <div th:if="${param.logout}">
+                     You have been logged out.
+                  </div>
+            </div>
+
+            <div class="container_registration_box">
+               
+               <form th:action="@{/registration}" method="post">
+                  
+                  <div class="container_field_box">
+                        <input class="field_sing-in" type="login" name="regLogin" placeholder="Login" required autofocus><br>
+                        <input class="field_sing-in" type="password" name="regPassword" placeholder="Password" required><br>
+                        <input class="field_sing-in" type="name" name="regName" placeholder="Name" required><br>
+                        <input class="field_sing-in" type="surname" name="regSurname" placeholder="Surname" required><br>
+                        <input class="field_sing-in" type="patronymic" name="regPatronymic" placeholder="Patronymic" required><br>
+                        <input class="field_sing-in" type="email" name="regEmail" placeholder="Email" required><br>
+                  </div>
+
+                  <div class="container_button_box">
+                     <button class="sing_in_button"  type="submit">Registration</button>
+                     <button class="sing_in_button"  type="submit">Back</button>
+                  </div>
+                  
+               </form>
+               
+            </div>
+            
+        </div>
+
+    </body>
+    
+</html>

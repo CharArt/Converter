@@ -1,0 +1,40 @@
+#ConBoxAll{
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+    margin:0 auto;
+    position: absolute;
+    background-image:url(../resources/image/honey_im_subtle.png);
+    background-repeat:repeat;
+}
+#ConBox{
+    height: 500px;
+    width: 500px;
+    top: 20%;
+    left: 0;
+    margin:0 auto;
+    position: relative;
+    justify-content: center;
+}
+.Valute{
+    top: 150px;
+    left:-35px;
+    margin:0 auto;
+    position: absolute;
+}
+.BackConvertationHistory{
+    top: 250px;
+    left:40px;
+    margin:0 auto;
+    position: absolute;
+}
+#ConBoxError{
+    height: 200px;
+    width: 1000px;
+    top: 0;
+    left: 22%;
+    margin:0 auto;
+    position: absolute;
+    justify-content: center;
+}

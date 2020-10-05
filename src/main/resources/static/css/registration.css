@@ -1,0 +1,40 @@
+#RegBoxAll{
+    height:100%;
+    width:100%;
+    left:0;
+    top:0;
+    margin:0 auto;
+    position: absolute;
+    background-image:url(../resources/image/honey_im_subtle.png);
+    background-repeat:repeat;
+}
+#RegBox{
+    height: 500px;
+    width: 500px;
+    top: 20%;
+    left: 0;
+    margin:0 auto;
+    position: relative;
+    justify-content: center;
+}
+.LoginPasswordNameSurnamePatronymicEmail{
+    top: 50px;
+    left:110px;
+    margin:0 auto;
+    position: absolute;
+}
+.BackRegister{
+    top: 345px;
+    left:128px;
+    margin:0 auto;
+    position: absolute;
+}
+#RegBoxError{
+    height: 200px;
+    width: 1000px;
+    top: 0;
+    left: 22%;
+    margin:0 auto;
+    position: absolute;
+    justify-content: center;
+}

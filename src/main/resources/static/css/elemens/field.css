@@ -1,0 +1,11 @@
+.field_sing-in{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 15px;
+    background-color: azure;
+    color: black;
+    font-size: 24px;
+    box-shadow: 3px 6px gray;
+}
