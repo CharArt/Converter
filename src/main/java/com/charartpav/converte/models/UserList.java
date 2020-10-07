@@ -1,7 +1,10 @@
 package com.charartpav.converte.models;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
    @NamedQuery(name = "UserList.findBySurname", query = "SELECT u FROM UserList u WHERE u.surname = :surname"),
    @NamedQuery(name = "UserList.findByPatronymic", query = "SELECT u FROM UserList u WHERE u.patronymic = :patronymic"),
    @NamedQuery(name = "UserList.findByUserEmail", query = "SELECT u FROM UserList u WHERE u.userEmail = :userEmail"),
-   @NamedQuery(name = "UserList.findByRegistrationDateTime", query = "SELECT u FROM UserList u WHERE u.registrationDateTime = :registrationDateTime")})
+   @NamedQuery(name = "UserList.findByRegistrationDate", query = "SELECT u FROM UserList u WHERE u.registrationDate = registrationDate")})
 public class UserList implements Serializable {
 
    private static final long serialVersionUID = 1L;
@@ -67,9 +70,9 @@ public class UserList implements Serializable {
    private String userEmail;
    
    @Basic(optional = false)
-   @Column(name = "RegistrationDateTime")
+   @Column(name = "RegistrationDate")
    @Temporal(TemporalType.TIMESTAMP)
-   private Date registrationDateTime;
+   private Date registrationDate;
    
    @JoinColumn(name = "UserRoleID", referencedColumnName = "UserRoleID")
    @ManyToOne(optional = false, fetch = FetchType.LAZY)
@@ -109,8 +112,8 @@ public class UserList implements Serializable {
    public String getUserEmail() { return userEmail; }
    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
-   public Date getRegistrationDateTime() {  return registrationDateTime; }
-   public void setRegistrationDateTime(Date registrationDateTime) { this.registrationDateTime = registrationDateTime; }
+   public Date getRegistrationDate() { return registrationDate;	}
+   public void setRegistrationDate(Date registrationDateTime) { this.registrationDate = registrationDateTime; }
 
    public UserRole getUserRoleID() { return userRoleID; }
    public void setUserRoleID(UserRole userRoleID) { this.userRoleID = userRoleID; }
@@ -138,7 +141,7 @@ public class UserList implements Serializable {
    @Override
    public String toString() {
 		return "UserList[ " + userID + " " + userLogin + " " + userPassword + " " + name + " " + surname + " " + 
-		patronymic +" "+ userEmail +" "+ registrationDateTime +" "+ userRoleID + " ]";
+		patronymic +" "+ userEmail +" "+ registrationDate +" "+ userRoleID + " ]";
    }
 
 }

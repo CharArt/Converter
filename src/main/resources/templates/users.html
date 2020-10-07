@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title>Sing-in</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="css/users.css"/>
+        <link rel="stylesheet" type="text/css" href="css/elemens/button.css"/>
+        <link rel="stylesheet" type="text/css" href="css/elemens/field.css"/>
+   </head>
+   <body>
+      <div class="container_all_users">
+         
+         <div class="container_error_box">
+            
+         </div>
+         
+         <div class="container_users_box">
+            <table border="1" cellpadding="7" cellspacing="0" style="text-align: center;">
+               
+               <form action="data">
+                  <tr>
+                     <td>UserID</td>
+                     <td>UserLogin</td>
+                     <td>UserPassword</td>
+                     <td>Name</td>
+                     <td>Surname</td>
+                     <td>Patronymic</td>
+                     <td>UserEmail</td>
+                     <td>
+                        <select>
+                           <option th:each="user:${users}" th:text="${user.RegistrationDate}" th:value="${user.RegistrationDate}">
+                           </option>
+                        </select>
+                     </td><br/>
+                  </tr>
+               </form>
+               
+               <form>
+                  <tr th:each="user:${users}" >
+                     <td id="UserID" th:text="${user.UserID}"></td>
+                     <td id="UserLogin" th:text="${user.UserLogin}"></td>
+                     <td id="UserPassword" th:text="${user.UserPassword}"></td>
+                     <td id="Name" th:text="${user.Name}">Name</td>
+                     <td id="Surname" th:text="${user.Surname}"></td>
+                     <td id="Patronymic" th:text="${user.Patronymic}"></td>
+                     <td id="UserEmail" th:text="${user.UserEmail}"></td>
+                     <td id="RegistrationDate" th:text="${user.RegistrationDate}"></td><br/>
+                  </tr>
+               </form>
+               
+            </table>
+         </div>
+         
+      </div>
+   </body>
+</html>

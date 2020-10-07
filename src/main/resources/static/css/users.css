@@ -1,4 +1,4 @@
-.container_all_login{
+.container_all_users{
    height:100%;
    width:100%;
    left:0;
@@ -17,25 +17,12 @@
     position: absolute;
     justify-content: center;
 }
-.container_login_box{
-    height: 500px;
-    width: 500px;
+.container_users_box{
+    height: 1000px;
+    width: 1000px;
     top: 20%;
     left: 0;
     margin:0 auto;
     position: relative;
     justify-content: center;
 }
-.container_field_box{
-    top: 120px;
-    left:90px;
-    margin:0 auto;
-    position: absolute;
-}
-.container_button_box{
-    top: 256px;
-    left:218px;
-    margin:0 auto;
-    position: absolute;
-}
-

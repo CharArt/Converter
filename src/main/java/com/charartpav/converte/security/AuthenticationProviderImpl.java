@@ -1,10 +1,8 @@
 package com.charartpav.converte.security;
 
+import com.charartpav.converte.models.UserList;
 import com.charartpav.converte.repository.UserListRepository;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -19,8 +17,9 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		User user = userRep.fin
-		
+		String email = authentication.getName();
+		UserList user = userRep.findByUserEmail(email);
+		return null;
 	}
 
 	@Override
