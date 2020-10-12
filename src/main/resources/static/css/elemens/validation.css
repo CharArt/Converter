@@ -1,0 +1,60 @@
+#validation-login{
+    height:34px;
+    width: 1000px;
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 15px;
+}
+#validation-password{
+    height: 34px;
+    width: 1000px;
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 15px;
+}
+#validation-name{
+    height: 34px;
+    width: 1000px;
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 15px;
+}
+#validation-surname{
+    height: 34px;
+    width: 1000px;
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 15px;
+}
+#validation-patronymic{
+    height: 34px;
+    width: 1000px;
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 15px;
+}
+#validation-email{
+    height: 34px;
+    width: 1000px;
+    color: #D63301;
+    background-color: #FFCCBA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+    background-repeat: no-repeat;
+    border: 2px solid;
+    border-radius: 15px;
+}

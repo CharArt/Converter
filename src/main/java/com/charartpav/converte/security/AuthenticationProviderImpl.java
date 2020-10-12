@@ -18,7 +18,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String email = authentication.getName();
-		UserList user = userRep.findByUserEmail(email);
+		UserList user = userRep.findByEmail(email);
 		return null;
 	}
 

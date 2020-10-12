@@ -32,9 +32,13 @@
 .container_error_box{
     height: 200px;
     width: 1000px;
-    top: 0;
-    left: 22%;
+    top: 2.5%;
+    left: 26%;
     margin:0 auto;
     position: absolute;
     justify-content: center;
+    text-align: center;
+    font-family: Verdana; 
+    font-size: 24px;
+    color: red;
 }

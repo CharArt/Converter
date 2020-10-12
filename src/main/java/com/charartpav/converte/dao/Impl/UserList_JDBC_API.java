@@ -1,6 +1,8 @@
-package com.charartpav.converte.dao;
+package com.charartpav.converte.dao.Impl;
 
+import com.charartpav.converte.dao.UserDAO;
 import com.charartpav.converte.models.UserList;
+import com.charartpav.converte.models.UserRole;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,9 +17,8 @@ import org.springframework.stereotype.Component;
 
 /* @author Artem Charykov*/
 
-
 @Component
-public class UserList_JDBC_API {
+public class UserList_JDBC_API implements UserDAO{
 	private static Connection conn;
 	static{
 		String url = null;
@@ -39,7 +40,8 @@ public class UserList_JDBC_API {
 		catch (SQLException | ClassNotFoundException ex) { ex.printStackTrace(); }
 	}
 	
-   public List<UserList> getAll() {
+	@Override
+	public List<UserList> getAll() {
 		try{
 			List<UserList> users = new ArrayList<>();
 			PreparedStatement ps = conn.prepareStatement("select * from UserList");
@@ -52,7 +54,7 @@ public class UserList_JDBC_API {
 				user.setName(resultSet.getString("Name"));
 				user.setSurname(resultSet.getString("Surname"));
 				user.setPatronymic(resultSet.getString("Patronymic"));
-				user.setUserEmail(resultSet.getString("UserEmail"));
+				user.setEmail(resultSet.getString("Email"));
 				user.setRegistrationDate(resultSet.getDate("RegistrationDate"));
 				users.add(user);
 			}
@@ -61,28 +63,8 @@ public class UserList_JDBC_API {
 		catch(SQLException ex){ ex.printStackTrace(); }
 		return	Collections.EMPTY_LIST;
     }
-		
-	public UserList getByUserEmail (String UserEmail){
-		try{
-			PreparedStatement ps = conn.prepareStatement("select * from UserList where UserEmail=?");
-			ps.setString(1, UserEmail);
-			ResultSet resultSet = ps.executeQuery();
-			if(resultSet.next()){
-				UserList user = new UserList();
-				user.setUserID(resultSet.getLong("UserID"));
-				user.setUserLogin(resultSet.getString("UserLogin"));
-				user.setUserPassword(resultSet.getString("UserPassword"));
-				user.setName(resultSet.getString("Name"));
-				user.setSurname(resultSet.getString("Surname"));
-				user.setPatronymic(resultSet.getString("Patronymic"));
-				user.setUserEmail(resultSet.getString("UserEmail"));
-				user.setRegistrationDate(resultSet.getDate("RegistrationDate"));
-				return user;
-			}
-		}catch(SQLException ex){ ex.printStackTrace(); }
-		return null;
-	}
 
+	@Override
 	public List<UserList> getByDate (String RegistrationDate){
 		try{
 			List<UserList> users = new ArrayList<>();
@@ -96,7 +78,7 @@ public class UserList_JDBC_API {
 				user.setName(resultSet.getString("Name"));
 				user.setSurname(resultSet.getString("Surname"));
 				user.setPatronymic(resultSet.getString("Patronymic"));
-				user.setUserEmail(resultSet.getString("UserEmail"));
+				user.setEmail(resultSet.getString("Email"));
 				user.setRegistrationDate(resultSet.getDate("RegistrationDate"));
 				users.add(user);
 				}
@@ -104,7 +86,30 @@ public class UserList_JDBC_API {
 			}catch(SQLException ex){ ex.printStackTrace(); }
 		return Collections.EMPTY_LIST;
 		}
+		
+	@Override
+	public UserList getByEmail (String Email){
+		try{
+			PreparedStatement ps = conn.prepareStatement("select * from UserList where Email=?");
+			ps.setString(1, Email);
+			ResultSet resultSet = ps.executeQuery();
+			if(resultSet.next()){
+				UserList user = new UserList();
+				user.setUserID(resultSet.getLong("UserID"));
+				user.setUserLogin(resultSet.getString("UserLogin"));
+				user.setUserPassword(resultSet.getString("UserPassword"));
+				user.setName(resultSet.getString("Name"));
+				user.setSurname(resultSet.getString("Surname"));
+				user.setPatronymic(resultSet.getString("Patronymic"));
+				user.setEmail(resultSet.getString("Email"));
+				user.setRegistrationDate(resultSet.getDate("RegistrationDate"));
+				return user;
+			}
+		}catch(SQLException ex){ ex.printStackTrace(); }
+		return null;
+	}
 
+	@Override
 	public UserList getByUserLogin (String UserLogin){
 		try{
 			PreparedStatement ps = conn.prepareStatement("select * from UserList where UserLogin=?");
@@ -118,11 +123,36 @@ public class UserList_JDBC_API {
 				user.setName(resultSet.getString("Name"));
 				user.setSurname(resultSet.getString("Surname"));
 				user.setPatronymic(resultSet.getString("Patronymic"));
-				user.setUserEmail(resultSet.getString("UserEmail"));
+				user.setEmail(resultSet.getString("Email"));
 				user.setRegistrationDate(resultSet.getDate("RegistrationDate"));
 				return user;
 			}
-		}catch(SQLException ex){ ex.printStackTrace(); }
+		}catch(SQLException ex){
+			ex.printStackTrace(); 
+		}
 		return null;
+	}
+
+	@Override
+	public void addUser (UserList user){
+		UserRole role = new UserRole();
+		role.setUserRoleID(2);
+		role.setRole("USER");
+		user.setUserRoleID(role);
+		try{
+			PreparedStatement ps = conn.prepareStatement(
+			  "insert into UserList(UserLogin,UserPassword,Name,Surname,Patronymic,Email,UserRoleID) values(?,?,?,?,?,?,?)");
+			ps.setString(1, user.getUserLogin());
+			ps.setString(2, user.getUserPassword());
+			ps.setString(3, user.getName());
+			ps.setString(4, user.getSurname());
+			ps.setString(5, user.getPatronymic());
+			ps.setString(6, user.getEmail());
+			ps.setInt(7, user.getUserRoleID().getUserRoleID());
+			ps.execute();
+		}
+		catch(SQLException ex){
+			ex.printStackTrace(); 
+		}
 	}
 }

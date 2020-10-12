@@ -31,7 +31,7 @@ public class UserRole implements Serializable {
    @Id
    @Basic(optional = false)
    @Column(name = "UserRoleID")
-   private Long userRoleID;
+   private int userRoleID;
    
    @Basic(optional = false)
    @Column(name = "Role")
@@ -41,14 +41,13 @@ public class UserRole implements Serializable {
    private List<UserList> userListList;
 
    public UserRole() {}
-   public UserRole(Long userRoleID) { this.userRoleID = userRoleID; }
-   public UserRole(Long userRoleID, String role) { this.userRoleID = userRoleID; this.role = role; }
+   public UserRole(int userRoleID) { this.userRoleID = userRoleID; }
+   public UserRole(int userRoleID, String role) { this.userRoleID = userRoleID; this.role = role; }
 
-   public Long getUserRoleID() { return userRoleID; }
-   public void setUserRoleID(Long userRoleID) { this.userRoleID = userRoleID; }
+   public int getUserRoleID() { return userRoleID; }
+   public void setUserRoleID(int userRoleID) { this.userRoleID = userRoleID; }
 
    public String getRole() { return role; }
-
    public void setRole(String role) { this.role = role; }
 
    @XmlTransient
@@ -56,25 +55,25 @@ public class UserRole implements Serializable {
 
    public void setUserListList(List<UserList> userListList) { this.userListList = userListList; }
 
-   @Override
-   public int hashCode() {
-      int hash = 0;
-      hash += (userRoleID != null ? userRoleID.hashCode() : 0);
-      return hash;
-   }
+	@Override
+	public int hashCode() {
+		return 0;
+	}
 
-   @Override
-   public boolean equals(Object object) {
-      // TODO: Warning - this method won't work in the case the id fields are not set
-      if (!(object instanceof UserRole)) {
-         return false;
-      }
-      UserRole other = (UserRole) object;
-      if ((this.userRoleID == null && other.userRoleID != null) || (this.userRoleID != null && !this.userRoleID.equals(other.userRoleID))) {
-         return false;
-      }
-      return true;
-   }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final UserRole other = (UserRole) obj;
+		return this.userRoleID == other.userRoleID;
+	}
 
    @Override
    public String toString() {
