@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-/* @author Artem Charykov*/
+/*@author Artem Charykov*/
 
 @Component
 public class UserList_JDBC_Tamplate implements UserDAO{
@@ -44,6 +44,7 @@ public class UserList_JDBC_Tamplate implements UserDAO{
 											new Object[] {UserLogin}, 
 											new BeanPropertyRowMapper<>(UserList.class)).stream().findAny().orElse(null);
 	}
+
 	@Override
 	public void addUser (UserList user){
 		int RoleID = 2; 

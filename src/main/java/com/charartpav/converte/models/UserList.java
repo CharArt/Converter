@@ -21,7 +21,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**@author Artem Charykov*/
+/*@author Artem Charykov*/
+
 @Entity
 @Table(name = "UserList")
 @XmlRootElement
@@ -33,7 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 	@NamedQuery(name = "UserList.findByName", query = "SELECT u FROM UserList u WHERE u.name = :name"),
 	@NamedQuery(name = "UserList.findBySurname", query = "SELECT u FROM UserList u WHERE u.surname = :surname"),
 	@NamedQuery(name = "UserList.findByPatronymic", query = "SELECT u FROM UserList u WHERE u.patronymic = :patronymic"),
-	@NamedQuery(name = "UserList.findByEmail", query = "SELECT u FROM UserList u WHERE u.Email = :Email"),
+	@NamedQuery(name = "UserList.findByEmail", query = "SELECT u FROM UserList u WHERE u.email = :email"),
 	@NamedQuery(name = "UserList.findByRegistrationDate", query = "SELECT u FROM UserList u WHERE u.registrationDate = registrationDate")})
 public class UserList implements Serializable {
 
@@ -52,7 +53,7 @@ public class UserList implements Serializable {
 	private String userLogin;
 	
 	@Basic(optional = false)
-	@Column(name = "Password")
+	@Column(name = "UserPassword")
 	@NotEmpty(message = "Password is required.")
 	@Size(min = 2, max=25, message = "Password should be from 1 to 25 symbols.")
 	private String userPassword;
@@ -79,8 +80,8 @@ public class UserList implements Serializable {
 	@Column(name = "Email")
 	@NotEmpty(message = "Email is required.")
 	@Size(min = 2, max=25, message = "Email should be from 1 to 25 symbols.")
-	@Email(message = "In entered an incorrect email address.")
-	private String Email;
+	@Email(message = "In entered an incorrect Email address.")
+	private String email;
    
 	@Basic(optional = false)
 	@Column(name = "RegistrationDate")
@@ -100,13 +101,13 @@ public class UserList implements Serializable {
 					String name, 
 					String surname, 
 					String patronymic, 
-					String Email) {
+					String email) {
 		this.userLogin = userLogin;
 		this.userPassword = userPassword;
 		this.name = name;
 		this.surname = surname;
 		this.patronymic = patronymic;
-		this.Email = Email;
+		this.email = email;
 	}
 
 	public Long getUserID() { return userID; }
@@ -127,8 +128,8 @@ public class UserList implements Serializable {
 	public String getPatronymic() { return patronymic; }
 	public void setPatronymic(String patronymic) { this.patronymic = patronymic; }
 
-	public String getEmail() { return Email; }
-	public void setEmail(String Email) { this.Email = Email; }
+	public String getEmail() { return email; }
+	public void setEmail(String email) { this.email = email; }
 
 	public Date getRegistrationDate() { return registrationDate; }
 	public void setRegistrationDate(Date registrationDateTime) { this.registrationDate = registrationDateTime; }
@@ -149,15 +150,12 @@ public class UserList implements Serializable {
 			return false;
 		}
 		UserList other = (UserList) object;
-		if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID))) {
-			return false;
-		}
-		return true;
+		return !((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID)));
 	}
 
 	@Override
 	public String toString() {
 		return "UserList[ " + userID + " " + userLogin + " " + userPassword + " " + name + " " + surname + " " + 
-						patronymic +" "+ Email +" "+ registrationDate +" "+ userRoleID + " ]";
+						patronymic +" "+ email +" "+ registrationDate +" "+ userRoleID + " ]";
 	}
 }

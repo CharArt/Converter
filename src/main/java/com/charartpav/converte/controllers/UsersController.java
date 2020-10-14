@@ -1,6 +1,6 @@
 package com.charartpav.converte.controllers;
 
-import com.charartpav.converte.dao.Impl.UserList_JDBC_API;
+import com.charartpav.converte.service.UserListService;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UsersController {
 
 	@Autowired
-	private UserList_JDBC_API user;
-	
+	//@Qualifier("UserList_JPA") - If you will use the DAO layer.
+	private UserListService userListService;
+
 	@GetMapping("/users")
 	public String getAllUsers (Model model)throws SQLException {
-		model.addAttribute("users", user.getAll());
+		model.addAttribute("users", userListService.getAll());
 		return"/users";
 	}
 
 	@PostMapping
 	public String getByData (@RequestParam String RegistrationDate, Model model){
-		model.addAttribute("users", user.getByDate(RegistrationDate));
+		model.addAttribute("users", userListService.getByData(RegistrationDate));
 		return"/users";
 	}
-
 }	

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Properties;
 import org.springframework.stereotype.Component;
 
-/* @author Artem Charykov*/
+/*@author Artem Charykov*/
 
 @Component
 public class UserList_JDBC_API implements UserDAO{
@@ -39,7 +39,7 @@ public class UserList_JDBC_API implements UserDAO{
 		} 
 		catch (SQLException | ClassNotFoundException ex) { ex.printStackTrace(); }
 	}
-	
+
 	@Override
 	public List<UserList> getAll() {
 		try{
@@ -68,7 +68,7 @@ public class UserList_JDBC_API implements UserDAO{
 	public List<UserList> getByDate (String RegistrationDate){
 		try{
 			List<UserList> users = new ArrayList<>();
-			PreparedStatement ps = conn.prepareStatement("select * from UserList where RegistrationDate=?");
+			PreparedStatement ps = conn.prepareStatement("select * from UserList where registrationDate=?");
 			ResultSet resultSet = ps.executeQuery();
 			while(resultSet.next()){
 				UserList user = new UserList();
@@ -86,12 +86,12 @@ public class UserList_JDBC_API implements UserDAO{
 			}catch(SQLException ex){ ex.printStackTrace(); }
 		return Collections.EMPTY_LIST;
 		}
-		
+
 	@Override
-	public UserList getByEmail (String Email){
+	public UserList getByEmail (String email){
 		try{
-			PreparedStatement ps = conn.prepareStatement("select * from UserList where Email=?");
-			ps.setString(1, Email);
+			PreparedStatement ps = conn.prepareStatement("select * from UserList where email=?");
+			ps.setString(1, email);
 			ResultSet resultSet = ps.executeQuery();
 			if(resultSet.next()){
 				UserList user = new UserList();

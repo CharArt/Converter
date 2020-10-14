@@ -15,5 +15,4 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/history").setViewName("history");
 		registry.addViewController("/converter").setViewName("converter");
 	}
-
 }

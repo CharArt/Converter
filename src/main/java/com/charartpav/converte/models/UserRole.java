@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/* @author Artem Charykov*/
+/*@author Artem Charykov*/
 
 @Entity
 @Table(name = "UserRole")
@@ -27,16 +27,16 @@ import javax.xml.bind.annotation.XmlTransient;
 public class UserRole implements Serializable {
 
    private static final long serialVersionUID = 1L;
-   
+
    @Id
    @Basic(optional = false)
    @Column(name = "UserRoleID")
    private int userRoleID;
-   
+
    @Basic(optional = false)
    @Column(name = "Role")
    private String role;
-   
+
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userRoleID", fetch = FetchType.LAZY)
    private List<UserList> userListList;
 
@@ -79,5 +79,4 @@ public class UserRole implements Serializable {
    public String toString() {
       return "UserRole[" + userRoleID + " "+ role + " ]";
    }
-
 }

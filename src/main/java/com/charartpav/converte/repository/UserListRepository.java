@@ -1,14 +1,20 @@
+
+
 package com.charartpav.converte.repository;
 
 import com.charartpav.converte.models.UserList;
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /*@author Artem Charykov*/
 
 @Repository
-public interface UserListRepository extends CrudRepository<UserList, Long> {
+public interface UserListRepository extends JpaRepository<UserList, Long> {
 
-public UserList findByEmail(String email);
+	public List<UserList> findByregistrationDate (String registrationDate);
 
+	public UserList findByEmail(String email);
+
+	public UserList findByUserLogin(String userLogin);
 }

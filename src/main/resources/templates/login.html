@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-   
     <head>
         <title>Sing-in</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -8,33 +7,23 @@
         <link rel="stylesheet" type="text/css" href="css/elemens/button.css"/>
         <link rel="stylesheet" type="text/css" href="css/elemens/field.css"/>
     </head>
-
     <body>
-
         <div class="container_all_login">
-
             <div class="container_error_box">
-               
-            </div>
 
+            </div>
             <div class="container_login_box">
-               
-               <form action="/login/procces" method="post">
+               <form action="#" th:action="@{/login/Authentication}" method="post">
                   <div class="container_field_box">
                      <input class="field_sing-in" type="email" name="email" placeholder="Email address" autofocus required="true"/><br>
                      <input class="field_sing-in" type="password" name="password" placeholder="Password" required="true"/><br>
-                     <button class="sing_in_button"  type="submit">Sign in</button>
+                     <button class="sing_in_button"  type="submit" onclick="document.location='redirect:/history'">Sign in</button>
                   </div>
                </form>
-               
                <div class="container_button_box">
                   <button class="sing_in_button"  onclick="document.location='/registration'">Registration</button>
                </div>
- 
-            </div>
-            
+            </div> 
         </div>
-
-    </body>
-    
+    </body>    
 </html>

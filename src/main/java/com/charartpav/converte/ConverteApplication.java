@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/*@author Artem Charykov*/
+
 @ComponentScan
 @SpringBootApplication
 public class ConverteApplication {
@@ -12,5 +14,4 @@ public class ConverteApplication {
 		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(ConverteApplication.class, args);
 	}
-
 }

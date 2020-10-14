@@ -1,5 +1,4 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Registration</title>
@@ -9,10 +8,8 @@
         <link rel="stylesheet" type="text/css" href="css/elemens/field.css"/>
         <link rel="stylesheet" type="text/css" href="css/elemens/validation.css"/>
     </head>
-
    <body>
       <div class="container_all_registration">
-          
             <div class="container_error_box">
                 <form action="#" th:action="@{/registration}" method="post" th:object="${user}" >
                     <th:block th:if="${#fields.hasErrors('userLogin')}">
@@ -30,12 +27,11 @@
                     <th:block th:if="${#fields.hasErrors('patronymic')}">
                         <div  id="validation-patronymic" th:errors="*{patronymic}"></div>
                     </th:block>
-                    <th:block th:if="${#fields.hasErrors('Email')}">
-                        <div  id="validation-email" th:errors="*{Email}" class="alert alert-danger"></div>
+                    <th:block th:if="${#fields.hasErrors('email')}">
+                        <div  id="validation-email" th:errors="*{email}" class="alert alert-danger"></div>
                     </th:block>
                 </form>
             </div>
-
             <div class="container_registration_box">
                 <form action="#" th:action="@{/registration}" method="post" th:object="${user}" >
                      <div class="container_field_box">
@@ -44,11 +40,10 @@
                         <input class="field_sing-in" type="text" th:field="*{name}" placeholder="Name" required="true"/>
                         <input class="field_sing-in" type="text" th:field="*{surname}" placeholder="Surname" required="true"/>
                         <input class="field_sing-in" type="text" th:field="*{patronymic}" placeholder="Patronymic" required="true"/>
-                        <input class="field_sing-in" type="email" th:field="*{Email}" placeholder="Email" required="true"/>
+                        <input class="field_sing-in" type="email" th:field="*{email}" placeholder="email" required="true"/>
                         <button class="sing_in_button"  type="submit">Registration</button><br>
                      </div>
                   </form>
-
                   <div class="container_button_box">
                      <button class="sing_in_button"  onclick="document.location='/login'">Back</button>
                   </div>

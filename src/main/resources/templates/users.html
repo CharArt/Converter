@@ -25,7 +25,7 @@
                      <td>Name</td>
                      <td>Surname</td>
                      <td>Patronymic</td>
-                     <td>Email</td>
+                     <td>email</td>
                      <td>
                         <select>
                            <option th:each="user:${users}" th:text="${user.RegistrationDate}" th:value="${user.RegistrationDate}">
@@ -43,7 +43,7 @@
                      <td id="Name" th:text="${user.Name}"></td>
                      <td id="Surname" th:text="${user.Surname}"></td>
                      <td id="Patronymic" th:text="${user.Patronymic}"></td>
-                     <td id="Email" th:text="${user.Email}"></td>
+                     <td id="email" th:text="${user.email}"></td>
                      <td id="RegistrationDate" th:text="${user.RegistrationDate}"></td><br/>
                   </tr>
                </form>
